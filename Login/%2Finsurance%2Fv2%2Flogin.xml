@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/insurance/v2/login" path="/insurance/v2/login" id="484d94b8-b929-4a42-817b-d6a6572207ce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="484d94b8-b929-4a42-817b-d6a6572207cefileName">%2Finsurance%2Fv2%2Flogin</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="POST" id="c8aae894-9c47-4bc9-9e3c-660e58eaa60d" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+      <con:status>401 500 400 429</con:status>
+      <con:params/>
+      <con:element xmlns:log="https://test.mobile-api.woolworths.com.au/insurance/v2/login">log:Fault</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:log="https://test.mobile-api.woolworths.com.au/insurance/v2/login">log:Response</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+      <con:status>206</con:status>
+      <con:params/>
+      <con:element xmlns:log="https://dev.mobile-api.woolworths.com.au/insurance/v2/login">log:Response</con:element>
+    </con:representation>
+    <con:request name="POST Request" id="a13085be-9b75-45e1-ace5-aa5b935d7a7c" mediaType="application/json">
+      <con:settings/>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="8c880cec-1553-4e68-9d29-5a83c54ae3ab">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9012e728-5302-4f27-99b4-9f921ba61213">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="8c880cec-1553-4e68-9d29-5a83c54ae3ab">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9012e728-5302-4f27-99b4-9f921ba61213">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="8c880cec-1553-4e68-9d29-5a83c54ae3ab">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9012e728-5302-4f27-99b4-9f921ba61213">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

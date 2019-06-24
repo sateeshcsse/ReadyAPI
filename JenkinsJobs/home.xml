@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="1f71f02e-9495-4e72-b769-efce02146d77" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="home" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="1f71f02e-9495-4e72-b769-efce02146d77fileName">home</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="PolicyCreation_home" id="2630c1f3-29a4-4b75-84d9-2064e1bc072d">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+   def url = context.expand( '${#Project#policyCreation_home}' )
+
+   def pFrequency="annual"
+   def pCover="tp"
+
+   // Optional, if not specified, WebDriver will search your path for chromedriver.
+	if(System.getProperty("os.name") == 'Mac OS X'){
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver');
+	}
+	else{
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver.exe');
+	} 
+   WebDriver driver = new ChromeDriver();
+   //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+   driver.get(url);
+   Thread.sleep(2000);
+
+   
+  driver.findElement(By.xpath('//*[@id="DutyOfDisclosure_container"]/div[2]/label[1]')).click();
+  driver.findElement(By.xpath('//*[@id="OwnOrRent_container"]/div[2]/label[2]')).click();
+  driver.findElement(By.xpath('//*[@id="TypeOfCover_container"]/div[2]/label[2]')).click();
+  driver.findElement(By.id('MainAddress')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#address}'));
+
+  
+Thread.sleep(6000);
+driver.findElement(By.id('MainAddress')).sendKeys(Keys.DOWN, Keys.RETURN);
+Thread.sleep(3000);
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[13]/input')).click();
+driver.findElement(By.xpath('//*[@id="TypeOfBuilding_container"]/div[2]/div/label[1]')).click();
+
+driver.findElement(By.xpath('//*[@id="WhenWasResidenceBuiltAgeBands"]')).sendKeys('1995-1999');
+Thread.sleep(1000);
+driver.findElement(By.xpath('//*[@id="MainConstructionMaterial_container"]/div[3]/div[1]/div/label[1]')).click();
+//driver.findElement(By.id('//input[@id="MainConstructionMaterial_V"]//parent::label')).click();
+//driver.findElement(By.id('MainRoofMaterial_C')).sendKeys(Keys.TAB,Keys.ENTER);
+driver.findElement(By.xpath('//*[@id="MainRoofMaterial_container"]/div[3]/div[1]/div/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="HomeSecurity_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[13]/input')).click();
+driver.findElement(By.id('ContentsValue')).sendKeys('130000');
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[6]/input')).click();
+driver.findElement(By.id('MainPolicyDateOfBirth_day')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#day}'));
+driver.findElement(By.id('MainPolicyDateOfBirth_month')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#month}'));
+driver.findElement(By.id('MainPolicyDateOfBirth_year')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#year}'));
+driver.findElement(By.xpath('//*[@id="NumberOfClaims_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="CurrentlyInsured_container"]/div[2]/label[2]')).click();
+Thread.sleep(1000);
+driver.findElement(By.xpath('//*[@id="InsuredLast30Days_container"]/div[2]/label[2]')).click();
+Thread.sleep(2000)
+driver.findElement(By.xpath('//*[@id="WhyNotInsured_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="HasBankrupt_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="HasCriminalConviction_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="HasFraudDishonesty_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[13]/input')).click();
+driver.findElement(By.xpath('//*[@id="MoreThan3Unrelated_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="IsSublet_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="IsWellMaintained_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="MoreThan10Acres_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="IsUsedForBusiness_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="CurrentlyUnderConstruction_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="HasPromoCode_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[13]/input')).click();
+if(pFrequency=='monthly'){
+	(new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[@id="PaymentFrequency_container"]/div[2]/label[2]')));
+	driver.findElement(By.xpath('//*[@id="PaymentFrequency_container"]/div[2]/label[2]')).click();
+	if(pCover=='compre'){
+		(new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[@id="productOption100"]/div/div/div[3]/div[1]')));
+		driver.findElement(By.xpath('//*[@id="productOption100"]/div/div/div[3]/div[1]')).click();
+		}
+	Thread.sleep(2000);
+	driver.findElement(By.xpath('//*[@id="onlineForm"]/div[12]/input[2]')).click();
+}
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[12]/input[2]')).click();
+driver.findElement(By.xpath('//*[@id="HasValuables_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[9]/input')).click();
+Thread.sleep(15000);
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[11]/input')).click();
+driver.findElement(By.id('MainPolicyFirstName')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#FirstName}')); // First name
+driver.findElement(By.id('MainPolicySurname')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#LastName}')); //Last name
+driver.findElement(By.xpath('//*[@id="MainPolicyMaleFemale_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="PostalSameAsMailing_container"]/div[2]/label[1]')).click();
+driver.findElement(By.id('MainPolicyPhoneNumber')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#Phone}'));
+driver.findElement(By.id('MainPolicyEmailAddress')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#Email}'));
+driver.findElement(By.xpath('//*[@id="MainPolicyPreferedContact_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="MainPolicySendPolicyDocs_container"]/div[2]/label[1]')).click();
+
+driver.findElement(By.xpath('//*[@id="MainPolicyHolderKeepInformedOfOffers_container"]/div[2]/label[2]')).click();
+
+
+
+driver.findElement(By.xpath('//*[@id="HasAdditionalPolicyHolders_container"]/div[2]/label[2]')).click();
+driver.findElement(By.xpath('//*[@id="ProductDisclosureStatement_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="PrivacyPolicy_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="DutyOfDisclosure_container"]/div[2]/label[1]')).click();
+driver.findElement(By.xpath('//*[@id="onlineForm"]/div[24]/input')).click();
+driver.findElement(By.xpath('//*[@id="ConfirmationBeforePayment_container"]/div[2]/label/span/i')).click();
+driver.findElement(By.xpath('//*[@id="Payment_Method_container"]/div[2]/label[1]')).click();
+driver.switchTo().frame("CreditCardFrame");
+driver.findElement(By.id('nm_card_holder')).sendKeys('Pusplatha'); // Enter Card Holder Name
+driver.findElement(By.id('no_credit_card')).sendKeys('4386280012345678'); // Enter Card Number
+driver.findElement(By.id('dt_expiry_year')).sendKeys('2029'); // Enter Expiry Year
+Thread.sleep(1000);
+driver.findElement(By.id('submitFormButton')).click();
+
+//(new WebDriverWait(driver,10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath('//*[@id="onlineForm"]/div[1]/div/div/span[1]')));
+
+Thread.sleep(5000);
+
+def policyNo=driver.findElement(By.xpath('//*[@id="onlineForm"]/div[1]/div/div/span[1]')).getText();
+log.info(policyNo);
+
+testRunner.testCase.getTestStepByName('Properties').setPropertyValue('PolicyNumber_Home',policyNo);
+   
+driver.quit();</script>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

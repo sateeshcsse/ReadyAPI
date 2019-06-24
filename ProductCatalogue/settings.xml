@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="977d9502-1c15-4720-9b5a-fbcb3108d906" wadlVersion="http://wadl.dev.java.net/2009/02" name="ProductCatalogue" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="977d9502-1c15-4720-9b5a-fbcb3108d906fileName">ProductCatalogue</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart=""/>
+  <con:endpoints/>
+  <con:environmentSpec>
+    <con:entry environmentId="9012e728-5302-4f27-99b4-9f921ba61213">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="cdd5a5e7-331b-4b7f-9285-209ba88a62c3" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="motor" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cdd5a5e7-331b-4b7f-9285-209ba88a62c3fileName">motor</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="PolicyCreation_Motor" id="2640222c-adfc-4d1f-811a-a0dd93184943">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+   def url = context.expand( '${#Project#policyCreation}' )
+
+def pType = context.expand( '${#[JenkinsJobs#Data_Generation#Properties]#pType}' )
+def pFrequency = context.expand( '${#[JenkinsJobs#Data_Generation#Properties]#pFrequency}' )
+def pCover = context.expand( '${#[JenkinsJobs#Data_Generation#Properties]#pCover}' )
+def addDriver = context.expand( '${#[JenkinsJobs#Data_Generation#Properties]#addDriver}' )
+
+   
+   
+   // Optional, if not specified, WebDriver will search your path for chromedriver.
+	if(System.getProperty("os.name") == 'Mac OS X'){
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver');
+	}
+	else{
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver.exe');
+	} 
+   WebDriver driver = new ChromeDriver();
+   //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+   driver.get(url);
+   Thread.sleep(2000);
+
+   // Page 1 -- Your Car
+
+   driver.findElement(By.xpath('//*[@id="DutyOfDisclosure_container"]/div[2]/label[1]')).click();
+   if(pType=='tp')
+    driver.findElement(By.xpath('//*[@id="ProductType_container"]/div[2]/label[2]/div')).click();
+   driver.findElement(By.xpath('//*[@id="FindCarMethod_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.id('CarYear')).sendKeys('2016');
+   //log.info(driver.findElement(By.xpath('//*[@id="CarMake"]/option[1]')).getText());
+   //(new WebDriverWait(driver,10)).until(ExpectedConditions.visibilityOf(By.xpath('//*[@id="CarMake"]/option[1]')));
+   Thread.sleep(4000);
+   driver.findElement(By.id('CarMake')).sendKeys('HOLDEN');
+   Thread.sleep(3000);
+   driver.findElement(By.id('CarModel')).sendKeys('INSIGNIA');
+   //webWait.until(ExpectedConditions.textToBePresentInElementValue(By.id('CarTransmission'),"Please Select"));
+   Thread.sleep(3000);
+   driver.findElement(By.id('CarTransmission')).sendKeys('AUTOMATIC');
+   (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[@id="ShowCarManualResults_container"]/table/tbody/tr[1]/td[1]')));
+   driver.findElement(By.xpath('//*[@id="ShowCarManualResults_container"]/table/tbody/tr[1]/td[1]')).click();
+   driver.findElement(By.xpath('//*[@id="onlineForm"]/div[13]/input')).click();
+   Thread.sleep(3000);
+
+   // Page 2 -- Car Usage
+
+   driver.findElement(By.xpath('//*[@id="CarUsage_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.id('KmsTravelled')).sendKeys('2000km');
+   driver.findElement(By.id('NighttimePostcode')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#address}')); // house address
+   Thread.sleep(5000);
+   driver.findElement(By.id('NighttimePostcode')).sendKeys(Keys.DOWN, Keys.RETURN);
+   driver.findElement(By.id('Nighttimeparking')).sendKeys('Garage');
+   driver.findElement(By.xpath('//*[@id="DaytimeKept_container"]/div[2]/label[1]')).click();
+   
+   driver.findElement(By.xpath('//*[@id="onlineForm"]/div[10]/input')).click();
+   Thread.sleep(3000);
+
+   // Page 3 -- Car Details
+
+   driver.findElement(By.xpath('//*[@id="CarHasExistingDamage_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="FinanceType_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="InsuredLast30Days_container"]/div[2]/label[2]')).click();
+   Thread.sleep(1000);
+   driver.findElement(By.xpath('//*[@id="PurchaseLast30Days_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="HasNonStandardSecurity_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasOptionalFactoryFittedExtras_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasModifications_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="onlineForm"]/div[16]/input')).click();
+   Thread.sleep(3000);
+
+   // Page 4 -- Driver Details
+
+   //driver.findElement(By.xpath('//*[@id="ExcludeDriversUnder25_container"]/div[2]/label[1]')).click();
+   Thread.sleep(5000);
+   driver.findElement(By.id('DateOfBirth_day')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#day}'));
+   driver.findElement(By.id('DateOfBirth_month')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#month}'));
+   driver.findElement(By.id('DateOfBirth_year')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#year}'));
+   driver.findElement(By.xpath('//*[@id="MaleFemale_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="HasValidDriversLicence_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.id('AgeFullLicence')).sendKeys('25');
+   //driver.findElement(By.xpath('//*[@id="MainDriverEmploymentStatus_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="NumberOfClaims_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="NumberOfDrivers_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="HasPromoCode_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//input[@value="Get quote"]')).click();
+
+   // Page 5 -- After get Quote
+
+   if(pFrequency=='monthly'){
+   	 (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[@id="PaymentFrequency_container"]/div[2]/label[2]')));
+   	 driver.findElement(By.xpath('//*[@id="PaymentFrequency_container"]/div[2]/label[2]')).click();
+   	 }
+   	 if(pCover=='dlpl'){
+   	(new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[contains(@id,"CoverChooserProducts_container")]/div[1]/div[2]')));
+   	driver.findElement(By.xpath('//*[contains(@id,"CoverChooserProducts_container")]/div[1]/div[2]')).click();
+	Thread.sleep(2000);
+   	//driver.findElement(By.xpath('//input[@value="Buy Now"]')).click();
+   	driver.findElement(By.xpath('//*[@id="onlineForm"]/div[21]/input[2]')).click();
+   	Thread.sleep(2000);
+   	//(new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath('//*[@id="modalConfirmationSubmit')));
+   	driver.findElement(By.xpath('//*[@id="modalConfirmationSubmit"]')).click();
+   	 }
+   	Thread.sleep(4000);
+   	if(pType=='tp'){
+   	driver.findElement(By.xpath('//input[@value="Buy Now"]')).click();
+   	//driver.findElement(By.xpath('//*[@id="onlineForm"]/div[20]/input[2]')).click();
+   	}
+   	//Thread.sleep(2000); 
+   //else if(pFrequency=='ANNUAL'){
+   	//driver.findElement(By.xpath('//*[contains(@id,"CoverChooserProducts_container")]/div[2]/div/div/div/div')).click();
+   //}
+  //if(pType=='DLPL' &amp;&amp; pFrequency=='MONTHLY'){
+   	//Thread.sleep(2000);
+   	//driver.findElement(By.xpath('//*[@id="modalConfirmationSubmit"]')).click();
+   //}
+
+   // Page 1 -- After Quote - Final Checks
+
+   driver.findElement(By.xpath('//*[@id="RegisteredOwner_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="CarUsageIncome_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="CarUsageRacing_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasBankrupt_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasLicenceCancelled_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasCriminalConviction_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="HasFraudDishonesty_container"]/div[2]/label[2]')).click();
+   driver.findElement(By.xpath('//*[@id="onlineForm"]/div[10]/input')).click();
+   Thread.sleep(2000);
+
+   // Page 2 -- After Quote - Final Details
+
+   driver.findElement(By.id('RegistrationNo')).sendKeys('LWC20'); // Registration Number
+   if(pCover=='dlpl' &amp;&amp; pType=='compre'){
+   	driver.findElement(By.id('OdometerReading')).sendKeys('14000'); // Odometer reading
+   	driver.findElement(By.xpath('//*[@id="PaydOdoDisclaimer_container"]/div[2]/label/span/i')).click();
+   }
+   driver.findElement(By.id('MainDriverFirstName')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#FirstName}')); // First name
+   driver.findElement(By.id('MainDriverLastName')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#LastName}')); // Last name
+   Thread.sleep(1000);
+   driver.findElement(By.xpath('//*[@id="IsMainDriverPolicyHolder_container"]/div[2]/label[1]')).click(); //Is this person a policy holder?
+   driver.findElement(By.xpath('//*[@id="IsMainDriverMainPolicyHolder_container"]/div[2]/label[1]')).click(); //Is this person amain policy holder?
+   if(addDriver=='no'){
+   	driver.findElement(By.xpath('//*[@id="HasAdditionalPolicyHolders_container"]/div[2]/label[2]')).click();  //Do you want to include any additional policy holders?
+   }
+
+   if(addDriver=='yes'){
+   	driver.findElement(By.xpath('//*[@id="HasAdditionalPolicyHolders_container"]/div[2]/label[1]')).click();  //Do you want to include any additional policy holders?
+   	Thread.sleep(1000);
+   	driver.findElement(By.xpath('//*[@id="NumberOfAdditionalPolicyHolders_container"]/div[2]/label[1]')).click();  //Is this person the main policy holder?
+   	driver.findElement(By.id('AddPolicyHolderFirstName_1')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#FirstName}'),'ADD'); // First name
+   	driver.findElement(By.id('AddPolicyHolderSurname_1')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#LastName}'),'ADD'); // Last name
+   	driver.findElement(By.id('AddPolicyHolderDateOfBirth_1_day')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#day}'),'ADD'); // Day of birth
+   	driver.findElement(By.id('AddPolicyHolderDateOfBirth_1_month')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#month}'),'ADD'); // Month of birth
+   	driver.findElement(By.id('AddPolicyHolderDateOfBirth_1_year')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#year}'),'ADD'); // Year of birth
+   	driver.findElement(By.xpath('//*[@id="AddPolicyHolderMaleFemale_1_container"]/div[2]/label[1]')).click(); //Additional Driver Gender
+   }
+
+   driver.findElement(By.xpath('//*[@id="PostalSameAsMailing_container"]/div[2]/label[1]')).click();    //Is the above address your postal address?
+   driver.findElement(By.id('MainPolicyPhoneNumber')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#Phone}')); // Phone Number
+   driver.findElement(By.id('MainPolicyEmailAddress')).sendKeys(context.expand('${#[JenkinsJobs#Data_Generation#Properties]#Email}')); // Email
+   driver.findElement(By.xpath('//*[@id="MainPolicyPreferedContact_container"]/div[2]/label[1]')).click();    //Preferred method of contact
+   driver.findElement(By.xpath('//*[@id="MainPolicySendPolicyDocs_container"]/div[2]/label[1]')).click();
+   driver.findElement(By.xpath('//*[@id="MainPolicyHolderKeepInformedOfOffers_container"]/div[2]/label[2]')).click();
+   //driver.findElement(By.xpath('//*[@id="MainPolicyHolderKeepInformedOfOffers_container"]/div[2]/label[2]')).click();    //Keep me updated with deals and special offers
+   driver.findElement(By.xpath('//*[@id="ProductDisclosureStatement_container"]/div[2]/label[1]')).click();    //you have accessed and read the Product Disclosure Statement and understand your obligations under it.
+   driver.findElement(By.xpath('//*[@id="PrivacyPolicy_container"]/div[2]/label[1]')).click();    //you have read, understand and agree to the Privacy Policy.
+   driver.findElement(By.xpath('//*[@id="DutyOfDisclosure_container"]/div[2]/label[1]')).click();    //you have read and understood the Duty of Disclosure notice and understand that a claim may be denied if you have not complied with the duty.
+   driver.findElement(By.xpath('//input[@type="submit"]')).click();    //Click Buy Now
+
+   // Page 3 -- After Quote - Payment
+
+   driver.findElement(By.xpath('//*[@id="ConfirmationBeforePayment_container"]/div[2]/label/span/i')).click();    //I confirm I have checked the details of my quote and the information supplied is correct. 
+   driver.findElement(By.xpath('//*[@id="Payment_Method_container"]/div[2]/label[1]')).click();    //Card Paymemnt
+
+   driver.switchTo().frame("CreditCardFrame");
+   driver.findElement(By.id('nm_card_holder')).sendKeys('Pusplatha'); // Enter Card Holder Name
+   driver.findElement(By.id('no_credit_card')).sendKeys('4386280012345678'); // Enter Card Number
+   driver.findElement(By.id('dt_expiry_month')).sendKeys('7'); // Enter expiry month
+   driver.findElement(By.id('dt_expiry_year')).sendKeys('2029'); // Enter Expiry Year
+   Thread.sleep(1000);
+
+   driver.findElement(By.id('submitFormButton')).click();
+   //driver.findElement(By.id('dt_expiry_year')).sendKeys(Keys.TAB,Keys.ENTER); //Click Pay Now
+   
+   //Thread.sleep(2000);
+ 	
+   // Final Confirmation page with Policy Number
+
+   (new WebDriverWait(driver,100)).until(ExpectedConditions.presenceOfElementLocated(By.xpath('//*[@id="onlineForm"]/div[1]/div/div/span[1]')));
+
+   def policyNo=driver.findElement(By.xpath('//*[@id="onlineForm"]/div[1]/div/div/span[1]')).getText();
+   log.info(policyNo);
+
+   testRunner.testCase.getTestStepByName('Properties').setPropertyValue('PolicyNumber',policyNo);
+   
+   driver.quit();</script>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

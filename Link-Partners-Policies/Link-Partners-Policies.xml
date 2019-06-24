@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Link Partners Policies" path="/insurance/v2/link/partners" id="140cd11f-0349-4e74-852e-edf34bd5a5ae" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="140cd11f-0349-4e74-852e-edf34bd5a5aefileName">Link-Partners-Policies</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>insurance</con:name>
+      <con:value>insurance</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>insurance</con:default>
+      <con:path xsi:nil="true"/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Link Partners Policies" id="820373b2-9410-4ba7-aa52-825a74e67775" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+      <con:status>404 401 500 400</con:status>
+      <con:params/>
+      <con:element xmlns:pol="https://test.mobile-api.woolworths.com.au/insurancee/v1/link/profile/policy">pol:Fault</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400 500 404 401</con:status>
+      <con:params/>
+      <con:element xmlns:pol="https://test.mobile-api.woolworths.com.au/insurancee/v1/link/profile/policy">pol:Fault</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:pol="https://test.mobile-api.woolworths.com.au/insurancee/v1/link/profile/policy">pol:Response</con:element>
+    </con:representation>
+    <con:request name="Link WebProfile To Policy API" id="d804ae44-b1d0-47cf-aa95-e3769c18dccf" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="authorization" value="Bearer ${Properties#access_token}"/>
+  &lt;con:entry key="X-Api-Key" value="${Properties#apikey}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting>
+      </con:settings>
+      <con:endpoint>https://test.mobile-api.woolworths.com.au</con:endpoint>
+      <con:request>{
+  "Policies":[
+    {
+          "PolicyNumber":"${Properties#PolicyNumber}",
+          "ClientKey":"${Properties#ClientKey}"
+      }
+    ],
+  "EmailId":"${Properties#EmailId}",
+  "PhoneNumber":"${Properties#PhoneNumber}"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <entry key="insurance" value="insurance" xmlns="http://eviware.com/soapui/config"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>insurance</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

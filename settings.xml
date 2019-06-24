@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="eabcd627-da48-4500-b8ab-36688c1ea0c5" created="2.3.0" activeEnvironment="TEST" name="JenkinsJobs" resourceRoot="" updated="2.7.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties>
+    <con:property>
+      <con:name>apikey</con:name>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation</con:name>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_home</con:name>
+    </con:property>
+    <con:property>
+      <con:name>x-Api-Key</con:name>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_LL</con:name>
+    </con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:environment id="3524f57a-22cb-4727-8f09-cbf427ec655b" name="UAT">
+    <con:service type="REST" name="SearchPartners">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Login">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="TravelSearch">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Registration">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="UpdateProfile">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="TravelPolicies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicyDetails">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ProductCatalogue">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="SharedPaymenturl">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="UpdateTravelQuote">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CreateTravelPolicy">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Link Partners Policies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CreateTravelQuote">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://uat.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>apikey</con:name>
+      <con:value>nQ4G8BaRz9w19iVTCWOMZbhE0fANHV5b</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation</con:name>
+      <con:value>https://wowcarpp.realinsurance.com.au/Car/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_home</con:name>
+      <con:value>https://wowhomepp.realinsurance.com.au/Home/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>x-Api-Key</con:name>
+      <con:value>lgeBxP9Wn2xGmR7FWvXPT2FpC639iNhG</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_LL</con:name>
+      <con:value>https://wowhomepp.realinsurance.com.au/Landlords</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="3d919fd0-b0f3-4d78-af39-a32f282ca514" name="DEV">
+    <con:service type="REST" name="SearchPartners">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Login">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="TravelSearch">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Registration">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="UpdateProfile">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="TravelPolicies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicyDetails">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ProductCatalogue">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="SharedPaymenturl">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="UpdateTravelQuote">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CreateTravelPolicy">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Link Partners Policies">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CreateTravelQuote">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://dev.mobile-api.woolworths.com.au</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>apikey</con:name>
+      <con:value>nQ4G8BaRz9w19iVTCWOMZbhE0fANHV5b</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation</con:name>
+      <con:value>https://wowcarsit.realinsurance.com.au/Car/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_home</con:name>
+      <con:value>https://wowhomesit.realinsurance.com.au/Home/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>x-Api-Key</con:name>
+      <con:value>lgeBxP9Wn2xGmR7FWvXPT2FpC639iNhG</con:value>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_LL</con:name>
+      <con:value/>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="670fc96f-c546-4765-901a-3dff52b2df00" name="TEST">
+    <con:service type="REST" name="SearchPartners">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="Login">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="TravelSearch">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="Registration">
+      <con:endpoint authProfile="No Authorization" xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:service>
+    <con:service type="REST" name="UpdateProfile">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="TravelPolicies">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicies">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="CarHomeLLPolicyDetails">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="ProductCatalogue">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="SharedPaymenturl">
+      <con:endpoint authProfile="No Authorization" xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:service>
+    <con:service type="REST" name="UpdateTravelQuote">
+      <con:endpoint authProfile="No Authorization" xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:service>
+    <con:service type="REST" name="CreateTravelPolicy">
+      <con:endpoint authProfile="No Authorization" xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:service>
+    <con:service type="REST" name="Link Partners Policies">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:service type="REST" name="CreateTravelQuote">
+      <con:endpoint authProfile="No Authorization" xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:service>
+    <con:property>
+      <con:name>apikey</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_home</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>x-Api-Key</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>policyCreation_LL</con:name>
+      <con:value/>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:authRepository/>
+  <con:environmentSpec>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+  <con:tags/>
+</con:soapui-project>

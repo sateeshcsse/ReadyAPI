@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="c1190276-deb6-4bcd-a753-a3512c581774" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="travel" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c1190276-deb6-4bcd-a753-a3512c581774fileName">travel</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="9b0d82a5-6468-413e-9234-4d0f6e4ba9d0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>transactionID</con:name>
+          <con:value>20079566</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="CreateTravelQuote" id="2fa28e59-93c1-4434-a226-0058acae764f">
+    <con:settings/>
+    <con:config service="CreateTravelQuote" resourcePath="/insurance/v1/travel/create/quote" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="CreateTravelQuote" id="a5443823-f11d-471d-95aa-b501ef2e5197" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-Api-Key" value="${#Project#x-Api-Key}" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:request>{ "ages": [ ${#[JenkinsJobs#Data_Generation#Properties]#age} ], "destinations": [ "IND" ], "start": "${#[JenkinsJobs#Data_Generation#Properties]#startdate}", "finish": "${#[JenkinsJobs#Data_Generation#Properties]#finish}", "rewardCardDetails": {"isRewardCardValidated": true,"rewardCardNumber": "9399660190444"} }</con:request>
+        <con:originalUri>http://test.mobile-api.woolworths.com.au/insurance/v1/travel/create/travel-quote</con:originalUri>
+        <con:assertion type="JsonPath Existence Match" id="b24a276d-4c6e-417a-a2ef-ba1abef336ef" name="Check for existence of [accessToken]">
+          <con:configuration>
+            <path>$['accessToken']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="abeb6dff-778e-462a-ad1d-ce72f3aafa4e" name="Check for existence of [requestData]">
+          <con:configuration>
+            <path>$['requestData']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="6d5394c0-55a7-40eb-a3d7-d399cf76ca33" name="Check for existence of [requestData]">
+          <con:configuration>
+            <path>$['requestData']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="d4704327-ff2a-47e8-bd26-c85458c093c8" name="Check for existence of [destinations]">
+          <con:configuration>
+            <path>$['requestData']['destinations']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="fa51f3af-0941-4e98-996d-4c22bd6c1041" name="Check for existence of [ages]">
+          <con:configuration>
+            <path>$['requestData']['ages']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="8002f43b-b3ac-4915-88ae-f4e1d4b2e6f1" name="Check for existence of [start]">
+          <con:configuration>
+            <path>$['requestData']['start']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="84f214dd-d9e7-484f-84bb-40d1f0f02408" name="Check for existence of [finish]">
+          <con:configuration>
+            <path>$['requestData']['finish']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="577df52b-f2b8-410f-841c-1650062d5054" name="Match content of [promotionCode]" disabled="true">
+          <con:configuration>
+            <path>$['promotionDetails']['promotionCode']</path>
+            <content>${CreateTravelQuote#Request#$['coupon']}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="48904bcd-1f36-44b0-a855-efaa5b2aa0ef" name="Match content of [pds]">
+          <con:configuration>
+            <path>$['pricingDetails']['pds']</path>
+            <content>https://insurance.woolworths.com.au/content/dam/Woolworths/Insurance/Travel/UsefulDocumentsTravel/Woolworths_Travel_Insurance_PDS.pdf</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="efe954c8-49a1-4008-9325-b90238c3d913">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="UpdateQuote_coverPage" id="a14104dc-0758-4893-83f1-390eec8ad5b1">
+    <con:settings/>
+    <con:config service="UpdateTravelQuote" resourcePath="/insurance/v1/travel/update/quote" methodName="PUT" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="UpdateQuote_coverPage" id="5f2600ad-6f6f-4ea8-b9aa-f4f785b8dd35" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="authorization" value="Bearer ${CreateTravelQuote#Response#$['accessToken']}"/>
+  &lt;con:entry key="X-Api-Key" value="${#Project#x-Api-Key}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request>{
+  "extras": [
+    {
+      "code": "EXC",
+      "variant": "0"
+    },
+    {
+      "code": "SKI"
+    }
+  ],
+
+  "type": "Saver"
+}</con:request>
+        <con:originalUri>https://test.mobile-api.woolworths.com.au/insurance/v1/travel/update/quote</con:originalUri>
+        <con:assertion type="JsonPath Existence Match" id="df816b94-9027-4a20-a9fd-3e7942366bdd" name="Check for existence of [status]">
+          <con:configuration>
+            <path>$['status']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="758999f9-3def-4364-a5a9-f48422cb12d9" name="Check for existence of [message]">
+          <con:configuration>
+            <path>$['message']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="5146ba9b-6410-48f2-9eb5-4cb008556ea6" name="Check for existence of [quoteType]">
+          <con:configuration>
+            <path>$['quoteType']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="79d7fa3a-8d93-434d-a83d-b0f582cda78c" name="Check for existence of [quoteStatus]">
+          <con:configuration>
+            <path>$['quoteStatus']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="efe954c8-49a1-4008-9325-b90238c3d913">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="UpdateQuote" id="ba6b0283-433b-4a1b-81cc-20d173a34ea1">
+    <con:settings/>
+    <con:config service="UpdateTravelQuote" resourcePath="/insurance/v1/travel/update/quote" methodName="PUT" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="UpdateQuote" id="5f2600ad-6f6f-4ea8-b9aa-f4f785b8dd35" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="authorization" value="Bearer ${CreateTravelQuote#Response#$['accessToken']}"/>
+  &lt;con:entry key="X-Api-Key" value="${#Project#x-Api-Key}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request>{
+
+  "customer": {
+    "age": ${#[JenkinsJobs#Data_Generation#Properties]#age},
+    "primaryHolder": true,
+    "firstName": "${#[JenkinsJobs#Data_Generation#Properties]#FirstName}",
+    "lastName": "${#[JenkinsJobs#Data_Generation#Properties]#LastName}",
+    "streetAddress": "200 Barangaroo Ave Barangaroo",
+    "suburb": "Parramatta",
+    "state": "NSW",
+    "postcode": "2000",
+    "phone": "${#[JenkinsJobs#Data_Generation#Properties]#Phone}",
+    "email": "${#[JenkinsJobs#Data_Generation#Properties]#Email}"
+    
+  },
+  "travellers": [
+    {
+      "age": 43,
+      "firstName": "${#[JenkinsJobs#Data_Generation#Properties]#FirstName}",
+      "lastName": "${#[JenkinsJobs#Data_Generation#Properties]#LastName}",
+      "dateOfBirth": "${#[JenkinsJobs#Data_Generation#Properties]#dob_travel}"
+    }
+  ],
+  "dependents": []
+}</con:request>
+        <con:originalUri>https://test.mobile-api.woolworths.com.au/insurance/v1/travel/update/quote</con:originalUri>
+        <con:assertion type="JsonPath Existence Match" id="df816b94-9027-4a20-a9fd-3e7942366bdd" name="Check for existence of [status]">
+          <con:configuration>
+            <path>$['status']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="758999f9-3def-4364-a5a9-f48422cb12d9" name="Check for existence of [message]">
+          <con:configuration>
+            <path>$['message']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="5146ba9b-6410-48f2-9eb5-4cb008556ea6" name="Check for existence of [quoteType]">
+          <con:configuration>
+            <path>$['quoteType']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="79d7fa3a-8d93-434d-a83d-b0f582cda78c" name="Check for existence of [quoteStatus]">
+          <con:configuration>
+            <path>$['quoteStatus']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="efe954c8-49a1-4008-9325-b90238c3d913">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="SharedPaymentURL" id="fe55a448-7f88-4123-867f-73a7249281ba">
+    <con:settings/>
+    <con:config service="SharedPaymenturl" resourcePath="/insurance/v1/travel/shared/payment" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="SharedPaymentURL" id="6a900d05-6c69-4075-93ea-299dc82046a7" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="authorization" value="Bearer ${CreateTravelQuote#Response#$['accessToken']}"/>
+  &lt;con:entry key="X-Api-Key" value="${#Project#x-Api-Key}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://test.mobile-api.woolworths.com.au/insurance/v1/travel/shared/payment</con:originalUri>
+        <con:assertion type="JsonPath Existence Match" id="91525512-6e06-4add-9cd2-e9812e87c659" name="Check for existence of [SharedPaymentUrl]">
+          <con:configuration>
+            <path>$['SharedPaymentUrl']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="c4e468cd-0a70-4cac-bc80-d71a5c41fa85" name="Check for existence of [AccessCode]">
+          <con:configuration>
+            <path>$['AccessCode']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="efe954c8-49a1-4008-9325-b90238c3d913">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="CreateHTML" id="1d43485b-e142-4020-a95f-9b6b81bc2c7f">
+    <con:settings/>
+    <con:config>
+      <script><![CDATA[//Write data to the test file
+File file = new File("C://Users//xpdn1//payment.html");
+
+	
+// Delete existing file in case if exists
+if (file.exists()) {
+	file.delete();
+}
+//Create New blank file
+file.createNewFile();
+FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
+BufferedWriter bw = new BufferedWriter(fw);
+bw.write('<script src="https://secure.ewaypayments.com/scripts/eCrypt.min.js"></script>\n');
+bw.write('<script>\n');
+ bw.write('   var eWAYConfig = {\n');
+def SharedURL = context.expand( '${SharedPaymentURL#Response#$[\'SharedPaymentUrl\']}' )
+ bw.write('     sharedPaymentUrl: "'+SharedURL+'"\n');
+   bw.write(' };\n');
+
+  bw.write('  function resultCallback(result, transactionID, errors) {\n');
+  bw.write('console.log(transactionID);');
+  
+     bw.write('   if (result == "Complete") {\n');
+     bw.write('alert(transactionID);');
+def accessCode = context.expand( '${SharedPaymentURL#Response#$[\'AccessCode\']}' )
+    bw.write('    window.location.href = "?AccessCode='+accessCode+'";\n');
+    bw.write('  } else if (result == "Error") {\n');
+      bw.write('  alert("There was a problem completing the payment: " + errors);\n');
+     bw.write(' }\n');
+   bw.write(' }\n');
+
+bw.write('</script>\n');
+
+bw.write('<button type="button" onClick="eCrypt.showModalPayment(eWAYConfig, resultCallback);">Pay with eWAY</button>\n');
+bw.close();]]></script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="IframeSubmit" id="76160a7f-6e44-49ac-98a8-523eb3db57ad">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.Alert;
+
+def url = "";
+
+   	if(System.getProperty("os.name") == 'Mac OS X'){
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver');
+	url = "file:////opt/SmartBear/ReadyAPI-2.5.0/bin/ext/payment.html";
+	}
+	else if (System.getProperty("os.name") == 'Linux'){
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver');
+	url = "file:////opt/SmartBear/ReadyAPI-2.5.0/bin/ext/payment.html";
+	} 
+	else{
+	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+'/ext/chromedriver.exe');
+	url = "file:///C:/Users/xpdn1/payment.html";
+	} 
+   //WebDriver driver = new ChromeDriver();
+   //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+   ChromeOptions  chrome_options= new ChromeOptions();
+   chrome_options.addArguments('--no-sandbox')
+   chrome_options.addArguments('--disable-dev-shm-usage')
+   
+   WebDriver driver = new ChromeDriver(chrome_options);
+   //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+   driver.get(url);
+   Thread.sleep(1000);
+
+driver.findElement(By.xpath('/html/body/button')).click();
+Thread.sleep(8000);
+//Alert alert = driver.switchTo().alert();
+//alert.accept();
+/*String homepage = driver.getWindowHandle();
+log.info(homepage);
+Set &lt;String> windows = driver.getWindowHandles();
+log.info(windows);*/
+
+int size = driver.findElements(By.tagName("iframe")).size();
+log.info(size);
+driver.switchTo().frame("eway-payment-window");
+driver.findElement(By.xpath('//*[@id="EWAY_CUSTOMEREMAIL"]')).sendKeys('TravelIframe@mailinator.com');
+driver.findElement(By.xpath('//*[@id="EWAY_CUSTOMERPHONE"]')).sendKeys('0469887444');
+driver.findElement(By.xpath('//*[@id="EWAY_CARDNUMBER"]')).sendKeys('4444333322221111');
+
+driver.findElement(By.xpath('//*[@id="EWAY_CARDNAME"]')).sendKeys('eWAY test');
+
+driver.findElement(By.xpath('//*[@id="EWAY_CARDEXPIRYMONTH"]'))sendKeys('may');
+
+driver.findElement(By.xpath('//*[@id="EWAY_CARDEXPIRYYEAR"]'))sendKeys('2020');
+
+driver.findElement(By.xpath('//*[@id="EWAY_CARDCVN"]')).sendKeys('444');
+
+driver.findElement(By.xpath('//*[@id="EWAYPayNowButton"]')).click();
+
+Thread.sleep(2000);
+
+//log.info( driver.switchTo().alert().getText());
+
+def TID = driver.switchTo().alert().getText();
+testRunner.testCase.getTestStepByName('Properties').setPropertyValue('transactionID',TID);
+
+driver.switchTo().alert().accept();
+driver.close();
+
+
+
+
+/*try{
+		Alert alert = driver.switchTo().alert();
+		def transactionID = alert.getText();  //Get the text of the alert or prompt 
+		testRunner.testCase.getTestStepByName('Properties').setPropertyValue('transactionID',transactionID);
+	}
+	catch(Exception e){
+		log.error('Failed to read Request / Response' +e);
+	}
+
+
+    try{
+         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+         
+       }
+ catch (org.openqa.selenium.UnhandledAlertException e) {                
+         Alert alert = driver.switchTo().alert(); 
+         def alertText = alert.getText().trim();
+         log.error("Alert data: "+ alertText);
+         alert.dismiss();}
+
+
+Thread.sleep(8000);
+*/</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="CreatePolicy" id="d62ebe55-5b58-45bb-bf1d-e39197921da2">
+    <con:settings/>
+    <con:config service="CreateTravelPolicy" resourcePath="/insurance/v1/travel/create/policy" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="CreatePolicy" id="a92a6847-ac7c-454b-8dd9-efca071825d9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="authorization" value="Bearer ${CreateTravelQuote#Response#$['accessToken']}"/>
+  &lt;con:entry key="X-Api-Key" value="${#Project#x-Api-Key}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request>{
+   "transactionID" : "${Properties#transactionID}"
+}</con:request>
+        <con:originalUri>https://test.mobile-api.woolworths.com.au/insurance/v1/travel/create/policy</con:originalUri>
+        <con:assertion type="JsonPath Match" id="6decb35b-2978-4c04-8107-40c6d989b59b" name="Match content of [status]">
+          <con:configuration>
+            <path>$['status']</path>
+            <content>success</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="efe954c8-49a1-4008-9325-b90238c3d913">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e1af48e5-26d8-460e-bad8-42e67c729142</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="3524f57a-22cb-4727-8f09-cbf427ec655b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="3d919fd0-b0f3-4d78-af39-a32f282ca514">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="670fc96f-c546-4765-901a-3dff52b2df00">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>
